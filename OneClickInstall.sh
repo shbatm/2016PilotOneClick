@@ -25,6 +25,9 @@ gotroot=`echo $?`
 if [ $gotroot -gt 0 ]; then
 	echo "No root yet, addressing the situation"
 
+    echo "Copying original 'factory_reset.sh'"
+    adb pull /system/etc/factory_reset.sh ./backup/factory_reset.sh
+
 	echo "Attempting to push payloads to /data/local/tmp/rootme\n"
 	adb shell 'mkdir /data/local/tmp/rootme'
 	adb push factory_reset_mod.sh /data/local/tmp/rootme/
